@@ -1,0 +1,6 @@
+A:\repositories\up_2\up_2\MyLib\bin\Debug\MyLib.dll
+A:\repositories\up_2\up_2\MyLib\bin\Debug\MyLib.pdb
+A:\repositories\up_2\up_2\MyLib\obj\Debug\MyLib.csprojAssemblyReference.cache
+A:\repositories\up_2\up_2\MyLib\obj\Debug\MyLib.csproj.CoreCompileInputs.cache
+A:\repositories\up_2\up_2\MyLib\obj\Debug\MyLib.dll
+A:\repositories\up_2\up_2\MyLib\obj\Debug\MyLib.pdb

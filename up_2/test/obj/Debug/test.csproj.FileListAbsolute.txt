@@ -1,0 +1,10 @@
+A:\repositories\up_2\up_2\test\obj\Debug\test.csprojAssemblyReference.cache
+A:\repositories\up_2\up_2\test\obj\Debug\test.csproj.CoreCompileInputs.cache
+A:\repositories\up_2\up_2\test\bin\Debug\test.exe.config
+A:\repositories\up_2\up_2\test\bin\Debug\test.exe
+A:\repositories\up_2\up_2\test\bin\Debug\test.pdb
+A:\repositories\up_2\up_2\test\bin\Debug\MyLib.dll
+A:\repositories\up_2\up_2\test\bin\Debug\MyLib.pdb
+A:\repositories\up_2\up_2\test\obj\Debug\test.csproj.CopyComplete
+A:\repositories\up_2\up_2\test\obj\Debug\test.exe
+A:\repositories\up_2\up_2\test\obj\Debug\test.pdb
