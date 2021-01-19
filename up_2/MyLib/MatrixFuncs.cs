@@ -109,7 +109,8 @@ namespace MyLib
         }
         static public string Func5(int [][] matrix)
         {
-            //__________________________________________________________________________________________
+
+            //____________________________первая попытка______________________________________________________________
             //Graph graph = new Graph();
             //for (int i = 0; i < matrix.GetLength(0); i++)
             //{
@@ -143,14 +144,67 @@ namespace MyLib
             //Dijkstra dijkstra = new Dijkstra(graph);
             //return dijkstra.FindShortestPath("[левый верхний угол]", Coord(matrix[matrix.GetLength(0) - 1].Length, 0));
             //__________________________________________________________________________________________
+
+
+            // //___вторая попытка
+            //Graph graph = new Graph();
+
+            //graph.AddVertex(Coord(0, 0));//добавляю самый первый элемент
+            //for (int j = 1; j < matrix[0].Length; j++)//иду по столбцам первой строки
+            //{
+            //    graph.AddVertex(Coord(0, j));
+            //    graph.AddEdge(Coord(0, j - 1), Coord(0, j), matrix[0][j]);//заполняю первую строку и соединяю между собой
+
+            //}
+            //graph.AddVertex("[левый верхний угол]");// добавляю стартовую точку
+            //graph.AddEdge(Coord(0, matrix[0].Length - 1), "[левый верхний угол]", matrix[0][matrix[0].Length - 1]);
+
+            //for (int i = 1; i < matrix.GetLength(0); i++)//иду по строкам
+            //{
+            //    graph.AddVertex(Coord(i, 0));//сначала добавляю первый элемент в строке и соединяю с первым элементом предыдущей строки
+            //    graph.AddEdge(Coord(i - 1, 0), Coord(i, 0), matrix[i][0]);
+            //    for (int j = 0; j < matrix[i].Length; j++)
+            //    {
+
+            //        graph.AddVertex(Coord(i, j));// потом создаю вершины и связь по строке и с предыдущей
+            //        graph.AddEdge(Coord(i, j - 1), Coord(i, j), matrix[i][j]);
+            //        if (j < matrix[i - 1].Length)
+            //        {
+            //            graph.AddEdge(Coord(i - 1, j), Coord(i, j), matrix[i][j]);
+            //        }
+            //    }
+
+
+            //}
+            //graph.AddVertex("[нижний правый угол]");// добавляю стартовую точку
+            //graph.AddEdge("[нижний правый угол]", Coord(matrix.GetLength(0) - 1, 0), matrix[matrix.GetLength(0) - 1][0]);
+
+
+
+
+
+            //////_______________
+
+            ////for (int i = 0; i < graph.Vertices.Count; i++)
+            ////{
+            ////    Console.WriteLine(graph.Vertices[i].Name);
+            ////}
+
+            //////_______________
+
+            //Dijkstra dijkstra = new Dijkstra(graph);
+            //// return dijkstra.FindShortestPath("[левый верхний угол]", Coord(matrix.GetLength(0) - 1, 0));
+            //return dijkstra.FindShortestPath("[нижний правый угол]", "[левый верхний угол]");
+
+            //___третяя попытка
             Graph graph = new Graph();
 
             graph.AddVertex(Coord(0, 0));//добавляю самый первый элемент
             for (int j = 1; j < matrix[0].Length; j++)//иду по столбцам первой строки
-            {           
-                    graph.AddVertex(Coord(0, j));   
-                    graph.AddEdge(Coord(0, j - 1), Coord(0, j), matrix[0][j]);//заполняю первую строку и соединяю между собой
-                          
+            {
+                graph.AddVertex(Coord(0, j));
+                graph.AddEdge(Coord(0, j - 1), Coord(0, j), max(matrix[0][j], matrix[0][j-1]));//заполняю первую строку и соединяю между собой
+                
             }
             graph.AddVertex("[левый верхний угол]");// добавляю стартовую точку
             graph.AddEdge(Coord(0, matrix[0].Length - 1), "[левый верхний угол]", matrix[0][matrix[0].Length - 1]);
@@ -158,18 +212,18 @@ namespace MyLib
             for (int i = 1; i < matrix.GetLength(0); i++)//иду по строкам
             {
                 graph.AddVertex(Coord(i, 0));//сначала добавляю первый элемент в строке и соединяю с первым элементом предыдущей строки
-                graph.AddEdge(Coord(i - 1, 0), Coord(i, 0), matrix[i][0]);
-                for (int j = 0; j < matrix[i].Length; j++)
+                graph.AddEdge(Coord(i - 1, 0), Coord(i, 0), max(matrix[i-1][0], matrix[i][0]) );
+                for (int j = 1; j < matrix[i].Length; j++)
                 {
-                  
+
                     graph.AddVertex(Coord(i, j));// потом создаю вершины и связь по строке и с предыдущей
-                    graph.AddEdge(Coord(i, j - 1), Coord(i, j), matrix[i][j]);
+                    graph.AddEdge(Coord(i, j - 1), Coord(i, j),max(matrix[i][j-1], matrix[i][j]));
                     if (j < matrix[i - 1].Length)
                     {
-                        graph.AddEdge(Coord(i - 1, j), Coord(i, j), matrix[i][j]);
+                        graph.AddEdge(Coord(i - 1, j), Coord(i, j), max(matrix[i-1][j], matrix[i][j]));
                     }
                 }
-                
+
 
             }
             graph.AddVertex("[нижний правый угол]");// добавляю стартовую точку
@@ -188,14 +242,32 @@ namespace MyLib
 
             ////_______________
 
-            Dijkstra dijkstra = new Dijkstra(graph);       
-           // return dijkstra.FindShortestPath("[левый верхний угол]", Coord(matrix.GetLength(0) - 1, 0));
-            return dijkstra.FindShortestPath( "[нижний правый угол]", "[левый верхний угол]");
-           
+            Dijkstra dijkstra = new Dijkstra(graph);
+            // return dijkstra.FindShortestPath("[левый верхний угол]", Coord(matrix.GetLength(0) - 1, 0));
+            return dijkstra.FindShortestPath("[нижний правый угол]", "[левый верхний угол]");
+
+
+
+
+
+
+
+
+
+
 
 
 
         }
+        //private pos FindShortestWay(int[][] mas, pos poz,ref List<pos> way)
+        //{
+        //    if (!poz.Equals(new pos(mas.GetLength(0) - 1, 0))) 
+        //    {
+        //        //смотрим позицию и проверяем куда мы можем пойти
+        //        // мы можем идти только в 
+        //    }
+
+        //}
         private struct pos
         {
             public int i;
@@ -212,6 +284,19 @@ namespace MyLib
             return Math.Abs(i - p) + Math.Abs(j - q);
         }
         private static string Coord(int i, int j) => $"[{i},{j}]";
+        private static string Coord(pos poz) => $"[{poz.i},{poz.j}]";
+        private static int max(int a, int b)
+        {
+            if (a>b)
+            {
+                return a;
+            }
+            if (b>a)
+            {
+                return b;
+            }
+            return a;
+        }
         
     }
 
