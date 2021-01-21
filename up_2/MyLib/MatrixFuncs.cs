@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 using MyLib;
 
 namespace MyLib
-{
+{/// <summary>
+/// матрикс артемикс
+/// </summary>
     public static class MatrixAndArrayFuncs
     {
         static public int[][] Func1(int m, int n)
@@ -107,6 +109,11 @@ namespace MyLib
                 }
             }
         }
+        /// <summary>
+        /// хихихи
+        /// </summary>
+        /// <param name="matrix"></param>
+        /// <returns></returns>
         static public string Func5(int [][] matrix)
         {
 
