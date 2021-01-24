@@ -11,8 +11,35 @@ namespace up_2
     {
         static void Main(string[] args)
         {
+
+
+            Console.WriteLine("Задание 1.");
+            MatrixAndArrayFuncs.ShowArray(MatrixAndArrayFuncs.Func1(3, 6));
+
+            Console.WriteLine("Задание 2.");
+
+            var mas = MatrixAndArrayFuncs.RandomArray(3, 4);
+            MatrixAndArrayFuncs.ShowArray(mas);
+            Console.Write("ответ ");
+            Console.WriteLine(MatrixAndArrayFuncs.Func2(mas));
+            Console.WriteLine("Задание 3.");
+            int[] mas2 = new int[] { 3, 5, 7, 2, 4, 6, -5, -6 };
+            MatrixAndArrayFuncs.ShowArray(mas2);
+            MatrixAndArrayFuncs.Func3(mas2, 2);
+            MatrixAndArrayFuncs.ShowArray(mas2);
+
+            Console.WriteLine("Задание 4.");
+            int[][] mas3 = new int[][] { new int[] { 0, 0, 0 },
+                                         new int[] { 0, 0, 0 }, 
+                                         new int[] { 0, 0, 1 } };
+            MatrixAndArrayFuncs.ShowArray(mas3);
+            Console.WriteLine("_____________");
+            MatrixAndArrayFuncs.Func4(mas3);
+            MatrixAndArrayFuncs.ShowArray(mas3);
+
+            Console.WriteLine("Задание 5.");
             Console.WriteLine("пример первый");
-            
+            // рисунки есть в папке где то с этими матрицами
             int[][] a = new int[6][];
             a[0] = new int[] {1,1,1,100,100,1,1 };
             a[1] = new int[] {1,100,1,1,1,1 };

@@ -1,0 +1,188 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MyLib</name>
+    </assembly>
+    <members>
+        <member name="M:MyLib.Dijkstra.#ctor(MyLib.Graph)">
+            <summary>
+            Конструктор
+            </summary>
+            <param name="graph">Граф</param>
+        </member>
+        <member name="M:MyLib.Dijkstra.InitInfo">
+            <summary>
+            Инициализация информации
+            </summary>
+        </member>
+        <member name="M:MyLib.Dijkstra.GetVertexInfo(MyLib.GraphVertex)">
+            <summary>
+            Получение информации о вершине графа
+            </summary>
+            <param name="v">Вершина</param>
+            <returns>Информация о вершине</returns>
+        </member>
+        <member name="M:MyLib.Dijkstra.FindUnvisitedVertexWithMinSum">
+            <summary>
+            Поиск непосещенной вершины с минимальным значением суммы
+            </summary>
+            <returns>Информация о вершине</returns>
+        </member>
+        <member name="M:MyLib.Dijkstra.FindShortestPath(System.String,System.String)">
+            <summary>
+            Поиск кратчайшего пути по названиям вершин
+            </summary>
+            <param name="startName">Название стартовой вершины</param>
+            <param name="finishName">Название финишной вершины</param>
+            <returns>Кратчайший путь</returns>
+        </member>
+        <member name="M:MyLib.Dijkstra.FindShortestPath(MyLib.GraphVertex,MyLib.GraphVertex)">
+            <summary>
+            Поиск кратчайшего пути по вершинам
+            </summary>
+            <param name="startVertex">Стартовая вершина</param>
+            <param name="finishVertex">Финишная вершина</param>
+            <returns>Кратчайший путь</returns>
+        </member>
+        <member name="M:MyLib.Dijkstra.SetSumToNextVertex(MyLib.GraphVertexInfo)">
+            <summary>
+            Вычисление суммы весов ребер для следующей вершины
+            </summary>
+            <param name="info">Информация о текущей вершине</param>
+        </member>
+        <member name="M:MyLib.Dijkstra.GetPath(MyLib.GraphVertex,MyLib.GraphVertex)">
+            <summary>
+            Формирование пути
+            </summary>
+            <param name="startVertex">Начальная вершина</param>
+            <param name="endVertex">Конечная вершина</param>
+            <returns>Путь</returns>
+        </member>
+        <member name="T:MyLib.Graph">
+            <summary>
+            Граф
+            </summary>
+        </member>
+        <member name="P:MyLib.Graph.Vertices">
+            <summary>
+            Список вершин графа
+            </summary>
+        </member>
+        <member name="M:MyLib.Graph.#ctor">
+            <summary>
+            Конструктор
+            </summary>
+        </member>
+        <member name="M:MyLib.Graph.AddVertex(System.String)">
+            <summary>
+            Добавление вершины
+            </summary>
+            <param name="vertexName">Имя вершины</param>
+        </member>
+        <member name="M:MyLib.Graph.FindVertex(System.String)">
+            <summary>
+            Поиск вершины
+            </summary>
+            <param name="vertexName">Название вершины</param>
+            <returns>Найденная вершина</returns>
+        </member>
+        <member name="M:MyLib.Graph.AddEdge(System.String,System.String,System.Int32)">
+            <summary>
+            Добавление ребра
+            </summary>
+            <param name="firstName">Имя первой вершины</param>
+            <param name="secondName">Имя второй вершины</param>
+            <param name="weight">Вес ребра соединяющего вершины</param>
+        </member>
+        <member name="P:MyLib.GraphEdge.ConnectedVertex">
+            <summary>
+            Связанная вершина
+            </summary>
+        </member>
+        <member name="P:MyLib.GraphEdge.EdgeWeight">
+            <summary>
+            Вес ребра
+            </summary>
+        </member>
+        <member name="M:MyLib.GraphEdge.#ctor(MyLib.GraphVertex,System.Int32)">
+            <summary>
+            Конструктор
+            </summary>
+            <param name="connectedVertex">Связанная вершина</param>
+            <param name="weight">Вес ребра</param>
+        </member>
+        <member name="P:MyLib.GraphVertex.Name">
+            <summary>
+            Название вершины
+            </summary>
+        </member>
+        <member name="P:MyLib.GraphVertex.Edges">
+            <summary>
+            Список ребер
+            </summary>
+        </member>
+        <member name="M:MyLib.GraphVertex.#ctor(System.String)">
+            <summary>
+            Конструктор
+            </summary>
+            <param name="vertexName">Название вершины</param>
+        </member>
+        <member name="M:MyLib.GraphVertex.AddEdge(MyLib.GraphEdge)">
+            <summary>
+            Добавить ребро
+            </summary>
+            <param name="newEdge">Ребро</param>
+        </member>
+        <member name="M:MyLib.GraphVertex.AddEdge(MyLib.GraphVertex,System.Int32)">
+            <summary>
+            Добавить ребро
+            </summary>
+            <param name="vertex">Вершина</param>
+            <param name="edgeWeight">Вес</param>
+        </member>
+        <member name="M:MyLib.GraphVertex.ToString">
+            <summary>
+            Преобразование в строку
+            </summary>
+            <returns>Имя вершины</returns>
+        </member>
+        <member name="P:MyLib.GraphVertexInfo.Vertex">
+            <summary>
+            Вершина
+            </summary>
+        </member>
+        <member name="P:MyLib.GraphVertexInfo.IsUnvisited">
+            <summary>
+            Не посещенная вершина
+            </summary>
+        </member>
+        <member name="P:MyLib.GraphVertexInfo.EdgesWeightSum">
+            <summary>
+            Сумма весов ребер
+            </summary>
+        </member>
+        <member name="P:MyLib.GraphVertexInfo.PreviousVertex">
+            <summary>
+            Предыдущая вершина
+            </summary>
+        </member>
+        <member name="M:MyLib.GraphVertexInfo.#ctor(MyLib.GraphVertex)">
+            <summary>
+            Конструктор
+            </summary>
+            <param name="vertex">Вершина</param>
+        </member>
+        <member name="T:MyLib.MatrixAndArrayFuncs">
+            <summary>
+            матрикс артемикс
+            </summary>
+        </member>
+        <member name="M:MyLib.MatrixAndArrayFuncs.Func5(System.Int32[][])">
+            <summary>
+            хихихи
+            </summary>
+            <param name="matrix"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

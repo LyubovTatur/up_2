@@ -27,10 +27,10 @@ namespace MyLib
         static public int Func2(int[][] matrix)
         {
             int num = 0;
-            for (int i = 0; i < matrix.GetLength(0); i++)
+            for (int i = 0; i < matrix.Length; i++)
             {
                 int positive = 0, negative = 0;
-                for (int j = 0; j < matrix.GetLength(1); j++)
+                for (int j = 0; j < matrix[i].Length; j++)
                 {
                     if (matrix[i][j]>0)
                     {
@@ -40,10 +40,11 @@ namespace MyLib
                     {
                         negative++;
                     }
-                    if (positive!=0 && negative!=0 && negative==positive)
-                    {
-                        num = i;
-                    }
+                    
+                }
+                if (positive != 0 && negative != 0 && negative == positive)
+                {
+                    num = i + 1;
                 }
             }
             return num;
@@ -61,15 +62,16 @@ namespace MyLib
         }
         static public void Func4(int[][] matrix)
         {
-            int[][] duplicate = matrix;
-            int n = matrix.GetLength(0);
+            int[][] duplicate = (int[][]) matrix.Clone();
+            //не работает  клонирование
+            int n = matrix.Length;
             for (int i = 0; i < n; i++)
             {
                 for (int j = 0; j < n; j++)
                 {
                     // иду по матрице (ij)
                     Dictionary<pos, int> dict = new Dictionary<pos, int>();
-                    int minDist = 0;
+                    int minDist = 100000000;
 
                     for (int p = 0; p < n; p++)
                     {
@@ -77,7 +79,7 @@ namespace MyLib
                         {
                             
                             // иду по проверочке (pq) 
-                            if (matrix[p][q]!=0)
+                            if (duplicate[p][q]!=0)
                             {
                                 dict.Add(new pos(p, q), Distance(i, j, p, q));
                                 if (Distance(i, j, p, q)<minDist)
@@ -88,7 +90,7 @@ namespace MyLib
                             
                         }
                     }
-
+                    Console.WriteLine(minDist);
                     int amount = 0;
                     // ищу ненулевое и их количество (>1 => оставляю)
                     pos keyToReplace = new pos();
@@ -100,8 +102,10 @@ namespace MyLib
                             keyToReplace = item.Key;
                         }
                     }
+                   
                     if (amount == 1)
                     {
+                        
                         matrix[i][j] = duplicate[keyToReplace.i][keyToReplace.j];
                     }
                     // ищу ближайшее из них
@@ -305,6 +309,41 @@ namespace MyLib
             return a;
         }
         
+        public static void ShowArray(int[][] arr)
+        {
+            for (int i = 0; i < arr.Length; i++)
+            {
+                for (int j = 0; j < arr[i].Length; j++)
+                {
+                    Console.Write(arr[i][j]);
+                    Console.Write("\t");
+                }
+                Console.WriteLine();
+            }
+        }
+        public static void ShowArray(int[] arr)
+        {
+            for (int i = 0; i < arr.Length; i++)
+            {
+                Console.Write(arr[i]);
+                Console.Write(" ");
+            }
+            Console.WriteLine();
+        }
+        public static int[][] RandomArray(int n, int m)
+        {
+            int[][] arr = new int[n][];
+            Random r = new Random();
+            for (int i = 0; i < arr.Length; i++)
+            {
+                arr[i] = new int[m];
+                for (int j = 0; j < m; j++)
+                {
+                    arr[i][j] = r.Next(-20,20);
+                }
+            }
+            return arr;
+        }
     }
 
 
